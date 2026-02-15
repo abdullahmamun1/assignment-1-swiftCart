@@ -29,6 +29,7 @@
       type="text/css"
     />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header>
@@ -72,19 +73,21 @@
           </ul>
         </div>
         <div class="navbar-end">
-          <a class="btn"><i class="fa-solid fa-cart-shopping"></i></a>
+          <a class="btn btn-ghost"><i class="fa-solid fa-cart-shopping"></i></a>
         </div>
       </div>
     </header>
 
-    <section>
-      <div>
-        <h1>Best Collection For you</h1>
-        <p>
+    <section class="header-content flex justify-center items-center">
+      <div class="space-y-6 text-left px-10">
+        <h1 class="font-bold text-white text-3xl md:text-5xl">
+          Best Collection For you
+        </h1>
+        <p class="text-white text-md md:w-3/5">
           Discover the latest trends in fashion, electronics, and more. Shop
           with confidence and style at SwiftCart.
         </p>
-        <button class="btn btn-primary">Shop Now</button>
+        <button class="btn btn-primary text-white">Shop Now</button>
       </div>
     </section>
     <script src="style.js"></script>
