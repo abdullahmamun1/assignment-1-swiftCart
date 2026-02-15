@@ -6,13 +6,9 @@ const products = document.getElementById("products-page");
 productsBtn.addEventListener("click", () => {
     productsBtn.classList.add("text-primary");
     homeBtn.classList.remove("text-primary");
-    home.classList.add("hide");
-    products.classList.remove("hide");
 });
 
 homeBtn.addEventListener("click", () => {
     homeBtn.classList.add("text-primary");
     productsBtn.classList.remove("text-primary");
-    home.classList.remove("hide");
-    products.classList.add("hide");
 });
