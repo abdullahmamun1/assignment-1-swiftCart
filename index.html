@@ -34,7 +34,7 @@
   <body>
     <!-- navbar  -->
     <header>
-      <div class="navbar bg-base-100 shadow-sm lg:px-40">
+      <div class="navbar bg-base-100 shadow-sm w-11/12 md:w-3/4 mx-auto">
         <div class="navbar-start">
           <div class="dropdown">
             <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -49,7 +49,7 @@
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h7"
+                  d="M4 6h16M4 12h8m-8 6h16"
                 />
               </svg>
             </div>
@@ -67,8 +67,8 @@
         </div>
         <div class="navbar-center hidden lg:flex">
           <ul class="menu menu-horizontal px-1">
-            <li><a>Home</a></li>
-            <li><a>Products</a></li>
+            <li><a id="homeBtn">Home</a></li>
+            <li><a id="productsBtn">Products</a></li>
             <li><a>About</a></li>
             <li><a>Contact</a></li>
           </ul>
@@ -79,160 +79,169 @@
       </div>
     </header>
 
-    <!-- banner  -->
-    <section class="header-content flex justify-center items-center">
-      <div class="space-y-6 w-11/12 md:w-3/4">
-        <h1 class="font-bold text-white text-3xl md:text-5xl">
-          Best Collection For you
-        </h1>
-        <p class="text-white text-md md:w-3/5">
-          Discover the latest trends in fashion, electronics, and more. Shop
-          with confidence and style at SwiftCart.
-        </p>
-        <button class="btn btn-primary text-white">Shop Now</button>
-      </div>
+    <!-- home page  -->
+    <section id="home-page">
+      <!-- banner  -->
+      <section class="header-content flex justify-center items-center">
+        <div class="space-y-6 w-11/12 md:w-3/4">
+          <h1 class="font-bold text-white text-3xl md:text-5xl">
+            Best Collection For you
+          </h1>
+          <p class="text-white text-md md:w-3/5">
+            Discover the latest trends in fashion, electronics, and more. Shop
+            with confidence and style at SwiftCart.
+          </p>
+          <button class="btn btn-primary text-white">Shop Now</button>
+        </div>
+      </section>
+
+      <!-- why choose us?  -->
+      <section class="py-10 md:py-20 bg-gray-50">
+        <div class="text-center space-y-3">
+          <h2 class="text-3xl font-bold">Why Choose Us</h2>
+          <p class="text-gray-400 text-sm w-3/4 mx-auto md:w-full">
+            We provide the best shopping experience with top-notch services.
+          </p>
+        </div>
+        <div
+          class="grid grid-cols-1 md:grid-cols-4 gap-5 w-11/12 md:w-3/4 mx-auto mt-10 md:mt-20"
+        >
+          <div class="bg-white p-5 rounded-lg shadow-sm space-y-6">
+            <span class="btn btn-square bg-primary-content p-5"
+              ><i class="fa-solid fa-truck-fast text-primary text-lg"></i
+            ></span>
+            <h3 class="font-semibold text-lg">Fast Delivery</h3>
+            <p class="text-gray-500 text-sm">
+              Get your orders delivered to your doorstep quickly and
+              efficiently.
+            </p>
+          </div>
+          <div class="bg-white p-5 rounded-lg shadow-sm space-y-6">
+            <span class="btn btn-square bg-primary-content p-5"
+              ><i class="fa-regular fa-headphones text-primary text-lg"></i
+            ></span>
+            <h3 class="font-semibold text-lg">24/7 Support</h3>
+            <p class="text-gray-500 text-sm">
+              Our support team is available around the clock to assist you.
+            </p>
+          </div>
+          <div class="bg-white p-5 rounded-lg shadow-sm space-y-6">
+            <span class="btn btn-square bg-primary-content p-5"
+              ><i class="fa-solid fa-shield text-primary text-lg"></i
+            ></span>
+            <h3 class="font-semibold text-lg">Secure Payment</h3>
+            <p class="text-gray-500 text-sm">
+              Experience safe and secure transactions with our encrypted payment
+              systems.
+            </p>
+          </div>
+          <div class="bg-white p-5 rounded-lg shadow-sm space-y-6">
+            <span class="btn btn-square bg-primary-content p-5"
+              ><i class="fa-solid fa-rotate text-primary text-lg"></i
+            ></span>
+            <h3 class="font-semibold text-lg">Easy Returns</h3>
+            <p class="text-gray-500 text-sm">
+              Not satisfied? Return your products easily within 30 days.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- trending now  -->
+      <section class="w-11/12 md:w-3/4 mx-auto py-10 md:py-20">
+        <h2 class="font-bold text-3xl">Trending Now</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-10">
+          <div class="rounded-lg shadow-sm space-y-4">
+            <img
+              src="Assets/bag.jpg"
+              class="h-100 w-full object-cover rounded-t-lg"
+              alt="description"
+            />
+            <div class="flex justify-between px-5">
+              <span
+                class="bg-primary-content text-primary px-2 py-1 text-sm rounded-xl"
+                >Men's Clothing</span
+              >
+              <span>
+                <i class="fa-solid fa-star text-warning"></i> 4.1 (259)
+              </span>
+            </div>
+            <div class="px-5">
+              <h3 class="font-semibold text-md">Men's bag</h3>
+              <h3 class="font-bold text-md text-primary">$109.95</h3>
+            </div>
+            <div class="grid grid-cols-2 gap-2 px-2 mb-4">
+              <div class="btn btn-outline flex items-center gap-2">
+                <i class="fa-regular fa-eye"></i> Details
+              </div>
+              <div class="btn btn-primary flex items-center gap-2">
+                <i class="fa-solid fa-cart-shopping"></i> Add
+              </div>
+            </div>
+          </div>
+          <div class="rounded-lg shadow-sm space-y-4">
+            <img
+              src="Assets/tshirt.jpg"
+              class="h-100 w-full object-cover rounded-t-lg"
+              alt="description"
+            />
+            <div class="flex justify-between px-5">
+              <span
+                class="bg-primary-content text-primary px-2 py-1 text-sm rounded-xl"
+                >Men's Clothing</span
+              >
+              <span>
+                <i class="fa-solid fa-star text-warning"></i> 4.1 (259)
+              </span>
+            </div>
+            <div class="px-5">
+              <h3 class="font-semibold text-md">Men's tshirt</h3>
+              <h3 class="font-bold text-md text-primary">$109.95</h3>
+            </div>
+            <div class="grid grid-cols-2 gap-2 px-2 mb-4">
+              <div class="btn btn-outline flex items-center gap-2">
+                <i class="fa-regular fa-eye"></i> Details
+              </div>
+              <div class="btn btn-primary flex items-center gap-2">
+                <i class="fa-solid fa-cart-shopping"></i> Add
+              </div>
+            </div>
+          </div>
+          <div class="rounded-lg shadow-sm space-y-4">
+            <img
+              src="Assets/jacket.jpg"
+              class="h-100 w-full object-cover rounded-t-lg"
+              alt="description"
+            />
+            <div class="flex justify-between px-5">
+              <span
+                class="bg-primary-content text-primary px-2 py-1 text-sm rounded-xl"
+                >Men's Clothing</span
+              >
+              <span>
+                <i class="fa-solid fa-star text-warning"></i> 4.1 (259)
+              </span>
+            </div>
+            <div class="px-5">
+              <h3 class="font-semibold text-md">Men's Jacket</h3>
+              <h3 class="font-bold text-md text-primary">$109.95</h3>
+            </div>
+            <div class="grid grid-cols-2 gap-2 px-2 mb-4">
+              <div class="btn btn-outline flex items-center gap-2">
+                <i class="fa-regular fa-eye"></i> Details
+              </div>
+              <div class="btn btn-primary flex items-center gap-2">
+                <i class="fa-solid fa-cart-shopping"></i> Add
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
 
-    <!-- why choose us?  -->
-    <section class="py-10 md:py-20 bg-gray-50">
-      <div class="text-center space-y-3">
-        <h2 class="text-3xl font-bold">Why Choose Us</h2>
-        <p class="text-gray-400 text-sm w-3/4 mx-auto md:w-full">
-          We provide the best shopping experience with top-notch services.
-        </p>
-      </div>
-      <div
-        class="grid grid-cols-1 md:grid-cols-4 gap-5 w-11/12 md:w-3/4 mx-auto mt-10 md:mt-20"
-      >
-        <div class="bg-white p-5 rounded-lg shadow-sm space-y-6">
-          <span class="btn btn-square bg-primary-content p-5"
-            ><i class="fa-solid fa-truck-fast text-primary text-lg"></i
-          ></span>
-          <h3 class="font-semibold text-lg">Fast Delivery</h3>
-          <p class="text-gray-500 text-sm">
-            Get your orders delivered to your doorstep quickly and efficiently.
-          </p>
-        </div>
-        <div class="bg-white p-5 rounded-lg shadow-sm space-y-6">
-          <span class="btn btn-square bg-primary-content p-5"
-            ><i class="fa-regular fa-headphones text-primary text-lg"></i
-          ></span>
-          <h3 class="font-semibold text-lg">24/7 Support</h3>
-          <p class="text-gray-500 text-sm">
-            Our support team is available around the clock to assist you.
-          </p>
-        </div>
-        <div class="bg-white p-5 rounded-lg shadow-sm space-y-6">
-          <span class="btn btn-square bg-primary-content p-5"
-            ><i class="fa-solid fa-shield text-primary text-lg"></i
-          ></span>
-          <h3 class="font-semibold text-lg">Secure Payment</h3>
-          <p class="text-gray-500 text-sm">
-            Experience safe and secure transactions with our encrypted payment
-            systems.
-          </p>
-        </div>
-        <div class="bg-white p-5 rounded-lg shadow-sm space-y-6">
-          <span class="btn btn-square bg-primary-content p-5"
-            ><i class="fa-solid fa-rotate text-primary text-lg"></i
-          ></span>
-          <h3 class="font-semibold text-lg">Easy Returns</h3>
-          <p class="text-gray-500 text-sm">
-            Not satisfied? Return your products easily within 30 days.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- trending now  -->
-    <section class="w-11/12 md:w-3/4 mx-auto py-10 md:py-20">
-      <h2 class="font-bold text-3xl">Trending Now</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-10">
-        <div class="rounded-lg shadow-sm space-y-4">
-          <img
-            src="Assets/bag.jpg"
-            class="h-100 w-full object-cover rounded-t-lg"
-            alt="description"
-          />
-          <div class="flex justify-between px-5">
-            <span
-              class="bg-primary-content text-primary px-2 py-1 text-sm rounded-xl"
-              >Men's Clothing</span
-            >
-            <span>
-              <i class="fa-solid fa-star text-warning"></i> 4.1 (259)
-            </span>
-          </div>
-          <div class="px-5">
-            <h3 class="font-semibold text-md">Men's bag</h3>
-            <h3 class="font-bold text-md text-primary">$109.95</h3>
-          </div>
-          <div class="grid grid-cols-2 gap-2 px-2 mb-4">
-            <div class="btn btn-outline flex items-center gap-2">
-              <i class="fa-regular fa-eye"></i> Details
-            </div>
-            <div class="btn btn-primary flex items-center gap-2">
-              <i class="fa-solid fa-cart-shopping"></i> Add
-            </div>
-          </div>
-        </div>
-        <div class="rounded-lg shadow-sm space-y-4">
-          <img
-            src="Assets/tshirt.jpg"
-            class="h-100 w-full object-cover rounded-t-lg"
-            alt="description"
-          />
-          <div class="flex justify-between px-5">
-            <span
-              class="bg-primary-content text-primary px-2 py-1 text-sm rounded-xl"
-              >Men's Clothing</span
-            >
-            <span>
-              <i class="fa-solid fa-star text-warning"></i> 4.1 (259)
-            </span>
-          </div>
-          <div class="px-5">
-            <h3 class="font-semibold text-md">Men's tshirt</h3>
-            <h3 class="font-bold text-md text-primary">$109.95</h3>
-          </div>
-          <div class="grid grid-cols-2 gap-2 px-2 mb-4">
-            <div class="btn btn-outline flex items-center gap-2">
-              <i class="fa-regular fa-eye"></i> Details
-            </div>
-            <div class="btn btn-primary flex items-center gap-2">
-              <i class="fa-solid fa-cart-shopping"></i> Add
-            </div>
-          </div>
-        </div>
-        <div class="rounded-lg shadow-sm space-y-4">
-          <img
-            src="Assets/jacket.jpg"
-            class="h-100 w-full object-cover rounded-t-lg"
-            alt="description"
-          />
-          <div class="flex justify-between px-5">
-            <span
-              class="bg-primary-content text-primary px-2 py-1 text-sm rounded-xl"
-              >Men's Clothing</span
-            >
-            <span>
-              <i class="fa-solid fa-star text-warning"></i> 4.1 (259)
-            </span>
-          </div>
-          <div class="px-5">
-            <h3 class="font-semibold text-md">Men's Jacket</h3>
-            <h3 class="font-bold text-md text-primary">$109.95</h3>
-          </div>
-          <div class="grid grid-cols-2 gap-2 px-2 mb-4">
-            <div class="btn btn-outline flex items-center gap-2">
-              <i class="fa-regular fa-eye"></i> Details
-            </div>
-            <div class="btn btn-primary flex items-center gap-2">
-              <i class="fa-solid fa-cart-shopping"></i> Add
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- products page  -->
+    <section id="products-page">
+      <h1>this is products page</h1>
     </section>
 
     <!-- footer  -->
