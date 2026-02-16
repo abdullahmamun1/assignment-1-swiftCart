@@ -240,7 +240,33 @@ const renderCartUI = () => {
             .map(
               (item) => `
               <li class="py-2">
-                
+                <!-- sidebar mobile card-->
+                <div class="md:hidden border border-base-300 rounded-xl p-3 bg-base-100">
+                  <div class="flex gap-3 items-start">
+                    <img src="${item.image}" class="w-16 h-16 object-cover rounded-lg" alt="" />
+                    <div class="flex-1">
+                      <p class="text-sm font-semibold leading-snug line-clamp-2">
+                        ${item.title}
+                      </p>
+
+                      <div class="flex items-center justify-between mt-3">
+                        <div class="flex items-center gap-2">
+                          <button class="btn btn-xs" onclick="changeQty(${item.id}, -1)">-</button>
+                          <span class="text-sm font-medium">${item.qty}</span>
+                          <button class="btn btn-xs" onclick="changeQty(${item.id}, 1)">+</button>
+                        </div>
+
+                        <p class="font-bold">$${(item.price * item.qty).toFixed(2)}</p>
+                      </div>
+
+                      <div class="mt-3">
+                        <button onclick="removeFromCart(${item.id})" class="btn btn-error btn-sm w-30 text-white">
+                          Remove
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
                 <!-- sidebar desktop card-->
                 <div class="hidden md:grid grid-cols-4 gap-3 items-center border-b border-base-300 pb-3">
