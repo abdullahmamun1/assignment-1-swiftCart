@@ -1,3 +1,4 @@
+
 const removeActive = () => {
     const categoryButtons = document.querySelectorAll('.cat-btn');
     categoryButtons.forEach(btn => {
@@ -70,6 +71,9 @@ const displayProductDetails = (product) => {
             </div>
             <h2 class="text-xl font-semibold mb-2">Product Description</h2>
             <p class="text-gray-500">${product.description}</p>
+            <button onclick="addToCart(${product.id})" class="btn btn-primary mt-10">
+                <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+              </button>
             
             </div>
         `
@@ -121,7 +125,7 @@ const displayProducts = (products) => {
             <div onclick = "loadProductDetails(${product.id})" class="btn btn-outline flex items-center gap-2">
               <i class="fa-regular fa-eye"></i> Details
             </div>
-            <div class="btn btn-primary flex items-center gap-2">
+            <div onclick = "addToCart(${product.id})" class="btn btn-primary flex items-center gap-2">
               <i class="fa-solid fa-cart-shopping"></i> Add
             </div>
         </div>
@@ -131,7 +135,15 @@ const displayProducts = (products) => {
     })
 }
 
-
+// Cart Functionality
+const CART_KEY = "swiftcart_cart";
+const loadCart = () => {
+    const raw = localStorage.getItem(CART_KEY);
+    return raw ? JSON.parse(raw) : [];
+}
+const saveCart = () => {
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+}
 
 loadProducts();
 loadCategories();
