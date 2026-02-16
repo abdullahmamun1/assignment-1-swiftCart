@@ -82,13 +82,14 @@
     <section id="products-page" class="py-10 md:py-20">
       <h1 class="text-3xl font-bold text-center">Our Products</h1>
       <div
-        class="flex items-center justify-center gap-5 w-11/12 md:w-3/4 mx-auto py-5"
-      >
-        <button class="btn btn-outline rounded-3xl py-2 px-4">All</button>
-        <button class="btn btn-outline rounded-3xl py-2 px-4">Men</button>
-        <button class="btn btn-outline rounded-3xl py-2 px-4">Women</button>
-        <button class="btn btn-outline rounded-3xl py-2 px-4">Kids</button>
-      </div>
+        id="category-container"
+        class="flex flex-wrap justify-center gap-5 w-11/12 md:w-3/4 mx-auto py-5"
+      ></div>
+
+      <section id="spinner" class="flex justify-center items-center py-20">
+        <span class="loading loading-bars loading-xl"></span>
+      </section>
+
       <div
         id="product-container"
         class="grid grid-cols-1 md:grid-cols-4 gap-5 w-11/12 md:w-3/4 mx-auto py-5"

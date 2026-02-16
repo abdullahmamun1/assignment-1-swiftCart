@@ -9,3 +9,8 @@
     background-position: center;
     height: 65vh;
 }
+
+.active {
+    background-color: #4f24c7;
+    color: white;
+}
