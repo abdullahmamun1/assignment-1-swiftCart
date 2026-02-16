@@ -137,10 +137,12 @@ const displayProducts = (products) => {
 
 // Cart Functionality
 const CART_KEY = "swiftcart_cart";
+let cart = [];
 const loadCart = () => {
     const raw = localStorage.getItem(CART_KEY);
     return raw ? JSON.parse(raw) : [];
 }
+
 const saveCart = () => {
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
 }
@@ -151,6 +153,8 @@ const addToCart = async (productId) => {
   if (existing) {
     existing.qty += 1;
     saveCart();
+      renderCartUI();
+      updateCartCountUI();
     return;
   }
 
@@ -168,9 +172,127 @@ const addToCart = async (productId) => {
   console.log(cart);
 
   saveCart();
+  renderCartUI();
+  updateCartCountUI();
 }
 
+const changeQty = (productId, delta) => {
+  const id = Number(productId);
+  const item = cart.find((x) => x.id === id);
+  if (!item) return;
 
-let cart = loadCart();
+  item.qty += delta;
+
+  if (item.qty <= 0) {
+    cart = cart.filter((x) => x.id !== id);
+  }
+
+  saveCart();
+    renderCartUI();
+    updateCartCountUI();
+}
+
+const getCartCount = () => {
+  return cart.reduce((sum, item) => sum + item.qty, 0);
+}
+
+const getCartTotal = () => {
+  return cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+}
+
+const removeFromCart = (productId) => {
+  const id = Number(productId);
+  cart = cart.filter((x) => x.id !== id);
+    saveCart();
+    renderCartUI();
+}
+
+const clearCart = () => {
+  cart = [];
+  saveCart();
+  renderCartUI();
+}
+
+const updateCartCountUI = () => {
+  const el = document.getElementById("cart-count");
+  if (el) el.textContent = getCartCount();
+}
+
+const renderCartUI = () => {
+  const cartContainer = document.getElementById("cart-container");
+    cartContainer.innerHTML = `
+    <!-- sidebar header-->
+    <h2 class="text-xl font-bold mb-4">Shopping Cart</h2>
+
+    <li class="hidden md:block mb-2">
+      <div class="grid grid-cols-4 gap-3 font-semibold opacity-70">
+        <p>Image</p>
+        <p>Title</p>
+        <p class="text-right">Price</p>
+        <p class="text-right">Action</p>
+      </div>
+    </li>
+
+    ${
+      cart.length === 0
+        ? `<li><p class="opacity-70 py-6 text-center">Cart is empty.</p></li>`
+        : cart
+            .map(
+              (item) => `
+              <li class="py-2">
+                
+
+                <!-- sidebar desktop card-->
+                <div class="hidden md:grid grid-cols-4 gap-3 items-center border-b border-base-300 pb-3">
+                  <img src="${item.image}" class="w-14 h-14 object-cover rounded-lg" alt="" />
+                  
+                  <div>
+                    <p class="text-sm font-medium line-clamp-1">${item.title}</p>
+                    <div class="flex items-center gap-2 mt-2">
+                      <button class="btn btn-xs" onclick="changeQty(${item.id}, -1)">-</button>
+                      <span class="text-sm font-medium">${item.qty}</span>
+                      <button class="btn btn-xs" onclick="changeQty(${item.id}, 1)">+</button>
+                    </div>
+                  </div>
+
+                  <p class="text-right font-semibold">$${(item.price * item.qty).toFixed(2)}</p>
+
+                  <div class="text-right">
+                    <button onclick="removeFromCart(${item.id})" class="btn btn-error btn-xs text-white">
+                      Remove
+                    </button>
+                  </div>
+                </div>
+
+              </li>
+            `
+            )
+            .join("")
+    }
+
+    <!-- sidebar footer-->
+    <li class="mt-4">
+      <div class="border-t border-base-300 pt-4">
+        <div class="flex justify-between items-center font-bold text-lg">
+          <p>Total: </p>
+          <p>$${getCartTotal().toFixed(2)}</p>
+        </div>
+
+        <div class=" grid grid-cols-2 gap-2">
+          <button class="btn btn-outline btn-sm" onclick="clearCart()">Clear</button>
+          <button class="btn btn-primary btn-sm">Checkout</button>
+        </div>
+      </div>
+    </li>
+  `;
+
+  updateCartCountUI();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderCartUI();
+});
+
+cart = loadCart();
 loadProducts();
 loadCategories();
