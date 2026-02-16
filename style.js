@@ -43,6 +43,39 @@ const loadProductsByCategory = async (category) => {
     clickBtn.classList.add('active');
 }
 
+const loadProductDetails = async (id) => {
+    const res = await fetch(`https://fakestoreapi.com/products/${id}`);
+    const data = await res.json();
+    displayProductDetails(data);
+}
+
+const displayProductDetails = (product) => {
+    const productDetails = document.getElementById("product-details");
+    productDetails.innerHTML = `
+            <div class="col-span-2 flex items-center justify-center">
+                <img src="${product.image}" alt="">
+            </div>
+            <div class="col-span-4 ml-20">
+                <h2 class="text-5xl font-bold mb-5">Product Details</h2>
+                <h2 class="text-2xl font-bold">${product.title}</h2>
+                <p class="">Price: <span class="font-bold text-primary">$${product.price}</span></p>
+                <div class="flex items-center justify-between py-4">
+                <span
+                    class="bg-primary-content text-primary rounded-full px-2 py-1 text-xs"
+                    >${product.category}</span
+                >
+                <span class="text-xs">
+                    <i class="fa-solid fa-star text-warning text-xs"></i> ${product.rating.rate} (${product.rating.count})
+                </span>
+            </div>
+            <h2 class="text-xl font-semibold mb-2">Product Description</h2>
+            <p class="text-gray-500">${product.description}</p>
+            
+            </div>
+        `
+    document.getElementById('product_modal').showModal();
+}
+
 const displayCategories = (categories) => {
     const categoryContainer = document.getElementById("category-container");
     categoryContainer.innerHTML = `<button id = "cat-btn-All" onclick = 'loadProductsByCategory("All")' class='btn btn-outline rounded-3xl py-2 px-4 cat-btn active'>All</button>`;
@@ -85,7 +118,7 @@ const displayProducts = (products) => {
             <h3 class="font-bold text-md text-primary">$${product.price}</h3>
         </div>
         <div class="grid grid-cols-2 gap-2 px-2 mb-4">
-            <div class="btn btn-outline flex items-center gap-2">
+            <div onclick = "loadProductDetails(${product.id})" class="btn btn-outline flex items-center gap-2">
               <i class="fa-regular fa-eye"></i> Details
             </div>
             <div class="btn btn-primary flex items-center gap-2">
@@ -97,6 +130,8 @@ const displayProducts = (products) => {
         productContainer.appendChild(div);
     })
 }
+
+
 
 loadProducts();
 loadCategories();
