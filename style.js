@@ -145,5 +145,32 @@ const saveCart = () => {
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
 }
 
+const addToCart = async (productId) => {
+  const id = Number(productId);
+  const existing = cart.find((x) => x.id === id);
+  if (existing) {
+    existing.qty += 1;
+    saveCart();
+    return;
+  }
+
+  const res = await fetch(`https://fakestoreapi.com/products/${id}`);
+  const product = await res.json();
+
+  cart.push({
+    id: product.id,
+    title: product.title,
+    price: Number(product.price) || 0,
+    image: product.image,
+    qty: 1,
+  });
+    
+  console.log(cart);
+
+  saveCart();
+}
+
+
+let cart = loadCart();
 loadProducts();
 loadCategories();
